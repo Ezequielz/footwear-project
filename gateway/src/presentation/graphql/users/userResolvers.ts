@@ -5,7 +5,7 @@ export const userResolvers  = {
         users: async () => {
             try {
               // Realizar la petición a la API
-              const response = await fetch(`${envs.API_URL}/api/users`);
+              const response = await fetch(`${envs.API_USERS}`);
               // Verificar que la respuesta sea exitosa
               if (!response.ok) {
                 throw new Error('Failed to fetch users');
@@ -21,7 +21,7 @@ export const userResolvers  = {
           },
           findUser: async (_: any, { id }: { id: string })=> {
             try {
-              const response = await fetch(`${envs.API_URL}/api/users/${id}`);
+              const response = await fetch(`${envs.API_USERS}/${id}`);
               if (!response.ok) {
                 throw new Error('Failed to fetch users');
               }

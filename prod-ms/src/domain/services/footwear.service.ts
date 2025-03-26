@@ -7,13 +7,13 @@ const getAll = async () => {
 
     try {
 
-        const calzado = await FootwearRepositoryImpl.findAll();
+        const footwear = await FootwearRepositoryImpl.findAll();
 
-        if (!calzado) throw CustomError.notFound('Error al encontrar los calzados');
+        if (!footwear) throw CustomError.notFound('Error al encontrar los calzados');
 
         return {
             ok: true,
-            products: calzado
+            products: footwear
         };
 
     } catch (error) {
@@ -25,13 +25,13 @@ const getById = async (id: string) => {
 
     try {
 
-        const calzado = await FootwearRepositoryImpl.findById(id);
+        const footwear = await FootwearRepositoryImpl.findById(id);
 
-        if (!calzado) throw CustomError.notFound('Error al encontrar el calzado');
+        if (!footwear) throw CustomError.notFound('Error al encontrar el calzado');
 
         return {
             ok: true,
-            product: calzado
+            product: footwear
         };
 
     } catch (error) {
@@ -62,13 +62,13 @@ const remove = async (id: string) => {
 
     try {
 
-        const calzado = await FootwearRepositoryImpl.delete(id);
+        const footwear = await FootwearRepositoryImpl.delete(id);
 
-        if (!calzado) throw CustomError.notFound('Error al eliminar el producto');
+        if (!footwear) throw CustomError.notFound('Error al eliminar el producto');
 
         return {
             ok: true,
-            product: calzado
+            product: footwear
         };
 
     } catch (error) {
@@ -79,7 +79,7 @@ const remove = async (id: string) => {
 
 const create = async ( footwearCreateDTO: FootwearCreateDTO ) => {
     try {
-
+        console.log(footwearCreateDTO)
         const footwear = await FootwearRepositoryImpl.save(footwearCreateDTO);
 
         if (!footwear) throw CustomError.notFound('Error al crear el calzado');

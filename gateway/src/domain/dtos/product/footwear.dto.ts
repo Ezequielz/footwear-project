@@ -25,10 +25,9 @@ const filterEntityFields = <T extends Record<string, any>>(
     return result;
   };
 
-const create = (object: FootwearCreateDTO): [string?, FootwearCreateDTO?] => {
-
-    const footwearEntity = createFootwearEntityFromObject(object);
-    const filteredObject = filterEntityFields(object, footwearEntity);
+const create = ( object: FootwearCreateDTO ): [string?, FootwearCreateDTO?] => {
+  const footwearEntity = createFootwearEntityFromObject(object);
+  const filteredObject = filterEntityFields(object, footwearEntity);
 
     const missingFields = Object.keys({} as FootwearCreateDTO).filter(key => !(key in filteredObject));
     if (missingFields.length > 0) {
@@ -52,6 +51,7 @@ const update = (object: FootwearUpdateDTO): [string?, FootwearUpdateDTO?] => {
   
     return [undefined, { ...filteredObject, updatedAt: new Date() }];
   };
+
 
 export const footwearDTO = {
     create,

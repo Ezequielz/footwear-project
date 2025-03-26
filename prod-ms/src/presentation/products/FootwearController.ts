@@ -7,7 +7,7 @@ const getAll = (req: Request, res: Response) => {
 
 
     FootwearService.getAll()
-        .then((users) => res.json(users))
+        .then((footwear) => res.json(footwear))
         .catch((error) => handleError(error, res));
 
 
@@ -20,22 +20,24 @@ const getById = (req: Request, res: Response) => {
         return;
     };
     FootwearService.getById(id!)
-        .then((user) => res.json(user))
+        .then((footwear) => res.json(footwear))
         .catch((error) => handleError(error, res));
 };
 
 const update = (req: Request, res: Response) => {
     const { id } = req.params;
     const object = req.body;
-
-    const [error, user] = footwearDTO.update({ id, ...object });
+  
+    const [error, footwear] = footwearDTO.update({ id, ...object });
     if (error) {
 
         res.status(400).json({ ok: false, error });
         return;
     };
-    FootwearService.update(user!)
-        .then((user) => res.json(user))
+
+   
+    FootwearService.update(footwear!)
+        .then((footwear) => res.json(footwear))
         .catch((error) => handleError(error, res));
 };
 
@@ -49,22 +51,22 @@ const remove = (req: Request, res: Response) => {
     };
 
     FootwearService.remove(id!)
-        .then((user) => res.json(user))
+        .then((footwear) => res.json(footwear))
         .catch((error) => handleError(error, res));
 };
 
 const create= (  req: Request, res: Response) => {
     const object = req.body;
 
-    const [error, user] = footwearDTO.create(object);
+    const [error, footwear] = footwearDTO.create(object);
     if (error) {
 
         res.status(400).json({ ok: false, error });
         return;
     };
 
-    FootwearService.create(user!)
-        .then((user) => res.json(user))
+    FootwearService.create(footwear!)
+        .then((footwear) => res.json(footwear))
         .catch((error) => handleError(error, res));
 
 }

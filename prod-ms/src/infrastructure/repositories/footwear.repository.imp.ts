@@ -11,7 +11,9 @@ export const FootwearRepositoryImpl: FootwearDataSource = {
     },
     async findById(id: string): Promise<FootwearEntity | null> {
         const footwear = await FootwearRepository.findById(id);
+     
         return footwear ? createFootwearEntityFromObject(footwear) : null;
+
     },
 
     async delete(id: string): Promise<FootwearEntity> {
@@ -19,12 +21,12 @@ export const FootwearRepositoryImpl: FootwearDataSource = {
         return createFootwearEntityFromObject(footwearDeleted)
     },
     async update(footwearUpdateDTO: FootwearUpdateDTO): Promise<FootwearEntity> {
-        const userUpdated = await FootwearRepository.update(footwearUpdateDTO);
-        return createFootwearEntityFromObject(userUpdated);
+        const footwearUpdated = await FootwearRepository.update(footwearUpdateDTO);
+        return createFootwearEntityFromObject(footwearUpdated);
     },
     async save(footwearCreateDTO: FootwearCreateDTO): Promise<FootwearEntity> {
-        const newUser = await FootwearRepository.save(footwearCreateDTO);
-        return createFootwearEntityFromObject(newUser);
+        const newFootwear = await FootwearRepository.save(footwearCreateDTO);
+        return createFootwearEntityFromObject(newFootwear);
     }
 
 };

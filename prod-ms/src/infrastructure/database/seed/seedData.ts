@@ -10,7 +10,7 @@ import { SizeResponse } from "./interfaces/size";
 
 
 
-interface FootwaerSeed extends Omit<FootwearEntity, 'id' | 'size'> { }
+interface FootwaerSeed extends Omit<FootwearEntity, 'id' | 'sizes'> { }
 
 
 export const getFootwearData = async (start: number) => {
