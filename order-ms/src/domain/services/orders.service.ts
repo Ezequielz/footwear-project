@@ -79,9 +79,9 @@ const remove = async (id: string) => {
 
 const create = async ( footwearCreateDTO: FootwearCreateDTO ) => {
     try {
-
+    
         const footwear = await FootwearRepositoryImpl.save(footwearCreateDTO);
-  
+
         if (!footwear) throw CustomError.notFound('Error al crear el calzado');
 
         return {
@@ -90,13 +90,12 @@ const create = async ( footwearCreateDTO: FootwearCreateDTO ) => {
         };
 
     } catch (error) {
- 
         return CustomError.internalServer(`${error}`);
     };
 
 }
 
-export const FootwearService = {
+export const OrdersService = {
     // Methods
     create,
     getAll,

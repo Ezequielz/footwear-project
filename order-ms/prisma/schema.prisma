@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+enum Gender {
+  MEN
+  WOMEN
+  KID
+  UNISEX
+}
+
+enum AvailabilityStatus {
+  IN_STOCK
+  NOT_AVAILABLE
+}
+
+model Size {
+  sku    String             @unique
+  stock  Int
+  status AvailabilityStatus
+  size   String
+
+  Footwear   Footwear? @relation(fields: [footwearId], references: [id])
+  footwearId String?
+}
+
+model Footwear {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  price       Float    @default(0)
+  slug        String   @unique
+  tags        String[] @default([])
+  gender      Gender
+  color       String
+  image       String
+  hoverImage  String
+  modelNumber String
+  // Relaciones
+  sizes       Size[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([gender])
+}

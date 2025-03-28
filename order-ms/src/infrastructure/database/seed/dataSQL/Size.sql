@@ -1,18 +1,18 @@
--- DROP TABLE IF EXISTS "public"."Size";
--- -- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
+DROP TABLE IF EXISTS "public"."Size";
+-- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
 
--- DROP TYPE IF EXISTS "public"."AvailabilityStatus";
--- CREATE TYPE "public"."AvailabilityStatus" AS ENUM ('IN_STOCK', 'NOT_AVAILABLE');
+DROP TYPE IF EXISTS "public"."AvailabilityStatus";
+CREATE TYPE "public"."AvailabilityStatus" AS ENUM ('IN_STOCK', 'NOT_AVAILABLE');
 
--- -- Table Definition
--- CREATE TABLE "public"."Size" (
---     "sku" text NOT NULL,
---     "stock" int4 NOT NULL,
---     "status" "public"."AvailabilityStatus" NOT NULL,
---     "size" text NOT NULL,
---     "footwearId" text,
---     CONSTRAINT "Size_footwearId_fkey" FOREIGN KEY ("footwearId") REFERENCES "public"."Footwear"("id") ON DELETE SET NULL ON UPDATE CASCADE
--- );
+-- Table Definition
+CREATE TABLE "public"."Size" (
+    "sku" text NOT NULL,
+    "stock" int4 NOT NULL,
+    "status" "public"."AvailabilityStatus" NOT NULL,
+    "size" text NOT NULL,
+    "footwearId" text,
+    CONSTRAINT "Size_footwearId_fkey" FOREIGN KEY ("footwearId") REFERENCES "public"."Footwear"("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
 
 INSERT INTO "public"."Size" ("sku", "stock", "status", "size", "footwearId") VALUES
 ('JI2448-5-P0', 15, 'IN_STOCK', '26.5  (UK 10K)', 'f8ff76b0-c1bb-4682-aad6-3e2801b0b9a2');

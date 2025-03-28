@@ -29,10 +29,10 @@ export const footwearTypeDefs = gql`
   }
 
   enum Gender {
-    kid
-    woman
-    men
-    unisex
+    KID
+    WOMAN
+    MEN
+    UNISEX
   }
 
   enum AvailabilityStatus {
@@ -62,7 +62,7 @@ export const footwearTypeDefs = gql`
     modelNumber: String!
     slug: String!
     price: Int!
-    sizes: [SizeDTO]!
+    sizes: [SizeDTO]
     color: String!
     image: String!
     hoverImage: String!

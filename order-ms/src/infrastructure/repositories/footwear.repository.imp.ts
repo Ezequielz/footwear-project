@@ -25,9 +25,7 @@ export const FootwearRepositoryImpl: FootwearDataSource = {
         return createFootwearEntityFromObject(footwearUpdated);
     },
     async save(footwearCreateDTO: FootwearCreateDTO): Promise<FootwearEntity> {
-     
         const newFootwear = await FootwearRepository.save(footwearCreateDTO);
-
         return createFootwearEntityFromObject(newFootwear);
     }
 

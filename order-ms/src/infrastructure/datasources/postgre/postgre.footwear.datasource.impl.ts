@@ -27,25 +27,20 @@ export const postgreFootwearDataSource: FootwearDataSource = {
 
     const { sizes, ...rest } = footwear;
 
-    try {
-      const newFootwear = await prisma.footwear.create({
-        data: rest
-      })
-      if (sizes && sizes.length > 0) {
-        await Promise.all(
-          sizes.map(async (size) => {
-            await prisma.size.create({
-              data: { ...size, footwearId: newFootwear.id },
-            });
-          })
-        );
-      }
+    const newFootwear = await prisma.footwear.create({
+      data: rest
+    })
 
-      return createFootwearEntityFromObject(newFootwear);
-    } catch (error) {
-      console.error('Error creating footwear:', error);
-      throw new Error('Error creating footwear');
+    if (sizes && sizes.length > 0) {
+      await Promise.all(
+        sizes.map(async (size) => {
+          await prisma.size.create({
+            data: { ...size, footwearId: newFootwear.id },
+          });
+        })
+      );
     }
+    return createFootwearEntityFromObject(newFootwear);
   },
 
   async update(footwearUpdateDTO: FootwearUpdateDTO) {

@@ -18,10 +18,10 @@ export interface FootwearEntity {
 }
 
 export enum Gender {
-    MEN = "MEN",
-    WOMEN = "WOMEN",
-    KID = "KID",
-    UNISEX = "UNISEX",
+    Men = "MEN",
+    Women = "WOMEN",
+    Kid = "KID",
+    Unisex = "UNISEX",
 
 }
 

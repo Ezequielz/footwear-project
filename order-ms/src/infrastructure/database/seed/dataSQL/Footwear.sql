@@ -1,27 +1,26 @@
--- DROP TABLE IF EXISTS "public"."Footwear";
--- DROP TABLE IF EXISTS "public"."Footwear" CASCADE;
+DROP TABLE IF EXISTS "public"."Footwear";
 -- This script only contains the table creation statements and does not fully represent the table in the database. It's still missing: indices, triggers. Do not use it as a backup.
 
--- DROP TYPE IF EXISTS "public"."Gender";
--- CREATE TYPE "public"."Gender" AS ENUM ('MEN', 'WOMEN', 'KID', 'UNISEX');
+DROP TYPE IF EXISTS "public"."Gender";
+CREATE TYPE "public"."Gender" AS ENUM ('MEN', 'WOMEN', 'KID', 'UNISEX');
 
 -- Table Definition
--- CREATE TABLE "public"."Footwear" (
---     "id" text NOT NULL,
---     "title" text NOT NULL,
---     "description" text NOT NULL,
---     "price" float8 NOT NULL DEFAULT 0,
---     "slug" text NOT NULL,
---     "tags" _text DEFAULT ARRAY[]::text[],
---     "gender" "public"."Gender" NOT NULL,
---     "color" text NOT NULL,
---     "createdAt" timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
---     "hoverImage" text NOT NULL,
---     "image" text NOT NULL,
---     "updatedAt" timestamp(3) NOT NULL,
---     "modelNumber" text NOT NULL,
---     PRIMARY KEY ("id")
--- );
+CREATE TABLE "public"."Footwear" (
+    "id" text NOT NULL,
+    "title" text NOT NULL,
+    "description" text NOT NULL,
+    "price" float8 NOT NULL DEFAULT 0,
+    "slug" text NOT NULL,
+    "tags" _text DEFAULT ARRAY[]::text[],
+    "gender" "public"."Gender" NOT NULL,
+    "color" text NOT NULL,
+    "createdAt" timestamp(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "hoverImage" text NOT NULL,
+    "image" text NOT NULL,
+    "updatedAt" timestamp(3) NOT NULL,
+    "modelNumber" text NOT NULL,
+    PRIMARY KEY ("id")
+);
 
 INSERT INTO "public"."Footwear" ("id", "title", "description", "price", "slug", "tags", "gender", "color", "createdAt", "hoverImage", "image", "updatedAt", "modelNumber") VALUES
 ('42b01af3-11d2-47f4-8fd4-1d268357fa75', 'Zapatillas Osade', 'Hombre Sportswear', 135999, 'zapatillas-osade/IG8696-44', '{}', 'MEN', 'ID3096', '2025-03-25 03:29:14.186', 'https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/b1f5afbf07394ee5af08d70263c2bc71_9366/zapatillas-osade.jpg', 'https://assets.adidas.com/images/w_383,h_383,f_auto,q_auto,fl_lossy,c_fill,g_auto/2bef7cca8f314e17b4d11d0dc12b6cbe_9366/zapatillas-osade.jpg', '2025-03-25 03:29:14.186', 'MAR56');
